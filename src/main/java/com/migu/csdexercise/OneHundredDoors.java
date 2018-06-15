@@ -46,7 +46,7 @@ class OneHundredDoors {
         visitTurn(2);
     }
 
-    public void visitOneHundredTunes() {
+    void visitOneHundredTunes() {
         visitTurn(100);
     }
 }
