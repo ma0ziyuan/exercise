@@ -40,8 +40,8 @@ public class OneHundredDoorsTest {
     public void testDoorsVisitTwice() {
         int[] doors = oneHundredDoors.getDoors();
         oneHundredDoors.visitTwice();
-        for (int i=0;i<doors.length;i++) {
-            if ((i+1)%2 == 0) {
+        for (int i = 0; i < doors.length; i++) {
+            if ((i + 1) % 2 == 0) {
                 assertEquals(OneHundredDoors.DOOR_STATUS_CLOSED, doors[i]);
             } else {
                 assertEquals(OneHundredDoors.DOOR_STATUS_OPENED, doors[i]);
@@ -53,7 +53,12 @@ public class OneHundredDoorsTest {
     public void testDoorsVisitOneHundredTunes() {
         int[] doors = oneHundredDoors.getDoors();
         oneHundredDoors.visitOneHundredTunes();
-        assertEquals(OneHundredDoors.DOOR_STATUS_OPENED,doors[0]);
-        assertEquals(OneHundredDoors.DOOR_STATUS_CLOSED, doors[4]);
+        for (int i = 1; i <= 10; i++) {
+            assertEquals(OneHundredDoors.DOOR_STATUS_OPENED, doors[i * i - 1]);
+            doors[i * i - 1] = OneHundredDoors.DOOR_STATUS_CLOSED;
+        }
+        for (int door:doors) {
+            assertEquals(OneHundredDoors.DOOR_STATUS_CLOSED, door);
+        }
     }
 }
