@@ -41,7 +41,7 @@ public class OneHundredDoorsTest {
         int[] doors = oneHundredDoors.getDoors();
         oneHundredDoors.visitTwice();
         for (int i=0;i<doors.length;i++) {
-            if (i%2 == 0) {
+            if ((i+1)%2 == 0) {
                 assertEquals(OneHundredDoors.DOOR_STATUS_CLOSED, doors[i]);
             } else {
                 assertEquals(OneHundredDoors.DOOR_STATUS_OPENED, doors[i]);
@@ -49,4 +49,11 @@ public class OneHundredDoorsTest {
         }
     }
 
+    @Test
+    public void testDoorsVisitOneHundredTunes() {
+        int[] doors = oneHundredDoors.getDoors();
+        oneHundredDoors.visitOneHundredTunes();
+        assertEquals(OneHundredDoors.DOOR_STATUS_OPENED,doors[0]);
+        assertEquals(OneHundredDoors.DOOR_STATUS_CLOSED, doors[4]);
+    }
 }

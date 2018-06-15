@@ -18,7 +18,7 @@ class OneHundredDoors {
     }
 
     void visitOnce() {
-        visit(1);
+        visitTurn(1);
     }
 
     private int toggleDoorStatus(int doorStatus) {
@@ -30,14 +30,23 @@ class OneHundredDoors {
 
     private void visit(int order) {
         for (int i = 0; i < doors.length; i++) {
-            if (i % order == 0) {
+            if ((i+1) % order == 0) {
                 doors[i] = toggleDoorStatus(doors[i]);
             }
         }
     }
 
+    private void visitTurn(int turns) {
+        for (int i=0;i<turns;i++) {
+            visit(i+1);
+        }
+    }
+
     void visitTwice() {
-        visit(1);
-        visit(2);
+        visitTurn(2);
+    }
+
+    public void visitOneHundredTunes() {
+        visitTurn(100);
     }
 }
