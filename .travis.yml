@@ -3,6 +3,8 @@ language: java
 jdk:
   - oraclejdk8
 
+env:
+  - COVERALLS_TOKEN
 
 script: "mvn cobertura:cobertura"
 
