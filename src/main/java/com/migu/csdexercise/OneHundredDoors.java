@@ -49,8 +49,4 @@ class OneHundredDoors {
     void visitOneHundredTunes() {
         visitTurn(100);
     }
-
-    void uselessMethod() {
-
-    }
 }
