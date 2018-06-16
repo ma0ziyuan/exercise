@@ -7,7 +7,7 @@ env:
   global:
     secure: kyAmCKmIazHIb5F595ALHnF6IkEzHbglmdmoXtBUJed2SPQXvWm67IB5GaAL30/duLej0OJTXqOlxSoiJZ8ZhLbxm/wBRuSHx9LK7yh6yxGKKWWnxiu3NoZ2nSE8lIlA5sXk9qdpRajLF44M64/sFB25uBscXqPCxjYI4FPdFXoPn1sVBmQdCvaUcuswLYMTU/7aRD9QsY/0DNyzxTVfx8t3AhQceYgLWeUGazEgK/RjHEWh8dahYaIk88akaiurjs9GUiuVIf8NSXiQuuqOKFiNkgydfTm/bouU/9j2hHWfbs4m379Kid4oPbFM0AqM4KKYACq65hyljNWhGoZYnQ2F1YKU3NkAnqWoe7rWb/uTf6hhhMQOU8+1nuXvZWWKbsJUEUOx6cgKYGrD/VKn4BTiQdCrjHrbkyC9RDEIe7/6DMeP9ETpfyFc9k7gzewMNGzbV6w+dqgm8QIpjgzvIjPJccfVeB1XukVYbKrnNBCCQa4OI1qTCxwiQOI3Z8g6r6HVpCBXim3VwH0Mea1qqCA/9p4uBxik8ufBu1TON/ZytmV7hrJKpAet30m8rsYnTDtkK27umKTrifeyCbg0tl2WdSKrkzuIHodvzILW1wu3fhpI12l6HdtpeHWYqYNHt3Tx57K038zf6yy8H//hAfMFeUE39bdU6xFYtD+0IBY=
 
-#script: "mvn cobertura:cobertura"
+script: "mvn cobertura:cobertura"
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
