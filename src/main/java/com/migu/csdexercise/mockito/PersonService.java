@@ -8,7 +8,7 @@ class PersonService {
     }
 
     /**
-     * update person
+     * update person.
      * @param id id
      * @param name id
      * @return update result
