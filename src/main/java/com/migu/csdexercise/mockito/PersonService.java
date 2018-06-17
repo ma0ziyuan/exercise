@@ -1,19 +1,24 @@
 package com.migu.csdexercise.mockito;
 
-public class PersonService {
+class PersonService {
     private final PersonDao personDao;
 
-    public PersonService(PersonDao personDao) {
+    PersonService(PersonDao personDao) {
         this.personDao = personDao;
     }
 
-    public boolean update(int id, String name) {
+    /**
+     * update person
+     * @param id id
+     * @param name id
+     * @return update result
+     */
+    boolean update(int id, String name) {
         Person person = personDao.getPerson(id);
         if (person == null) {
             return false;
         }
-
-        Person personUpdate = new Person(person.getId(), name);
-        return personDao.update(personUpdate);
+        person.setName(name);
+        return personDao.update(person);
     }
 }
