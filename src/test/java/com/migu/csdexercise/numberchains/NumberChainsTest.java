@@ -9,5 +9,8 @@ public class NumberChainsTest {
     public void testCalChainLength() {
         NumberChains numberChains = new NumberChains("123456789");
         assertEquals(2,numberChains.calChainLength());
+
+        numberChains = new NumberChains("1234");
+        assertEquals(4,numberChains.calChainLength());
     }
 }
