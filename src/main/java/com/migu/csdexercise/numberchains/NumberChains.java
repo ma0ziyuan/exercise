@@ -17,8 +17,8 @@ class NumberChains {
             intDigitsAsc[i] = chardigitsAsc[i];
             intDigitsDesc[i] = chardigitsAsc[i];
         }
-        bubbleSortAsc(intDigitsAsc);
-        bubbleSortDesc(intDigitsDesc);
+        bubbleSort(intDigitsAsc, true);
+        bubbleSort(intDigitsDesc, false);
         for (int i = 0; i < chardigitsAsc.length; i++) {
             chardigitsAsc[i] = (char) intDigitsAsc[i];
         }
@@ -34,32 +34,20 @@ class NumberChains {
 
     long calChainLength() {
         long lastResult = calChainLength(Long.parseLong(input));
-        long newResult=0;
+        long newResult = 0;
         long chainNumber = 1;
         do {
-            if (chainNumber>1)  lastResult=newResult;
+            if (chainNumber > 1) lastResult = newResult;
             chainNumber++;
-            newResult= calChainLength(lastResult);
-        } while ((newResult!=lastResult));
+            newResult = calChainLength(lastResult);
+        } while ((newResult != lastResult));
         return chainNumber;
     }
 
-    private void bubbleSortDesc(int[] arrayToSort) {
+    private void bubbleSort(int[] arrayToSort, boolean isAsc) {
         for (int i = 0; i < arrayToSort.length; i++) {
             for (int j = i + 1; j < arrayToSort.length; j++) {
-                if (arrayToSort[i] < arrayToSort[j]) {
-                    int tmp = arrayToSort[i];
-                    arrayToSort[i] = arrayToSort[j];
-                    arrayToSort[j] = tmp;
-                }
-            }
-        }
-    }
-
-    private void bubbleSortAsc(int[] arrayToSort) {
-        for (int i = 0; i < arrayToSort.length; i++) {
-            for (int j = i + 1; j < arrayToSort.length; j++) {
-                if (arrayToSort[i] > arrayToSort[j]) {
+                if (isAsc && (arrayToSort[i] > arrayToSort[j]) || !isAsc && (arrayToSort[i] < arrayToSort[j])) {
                     int tmp = arrayToSort[i];
                     arrayToSort[i] = arrayToSort[j];
                     arrayToSort[j] = tmp;
