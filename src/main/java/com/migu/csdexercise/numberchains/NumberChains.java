@@ -1,7 +1,7 @@
 package com.migu.csdexercise.numberchains;
 
 import java.util.Arrays;
-import java.util.Comparator;
+import java.util.Collections;
 
 class NumberChains {
     private String input;
@@ -21,7 +21,9 @@ class NumberChains {
             intDigitsDesc[i] = chardigitsAsc[i] - '0';
         }
         Arrays.sort(intDigitsAsc);
-        Arrays.sort(intDigitsDesc, Comparator.reverseOrder());
+        Arrays.sort(intDigitsDesc);
+        Collections.reverse(Arrays.asList(intDigitsDesc));
+
 
         char[] chardigitsDesc = new char[chardigitsAsc.length];
         for (int i = 0; i < chardigitsAsc.length; i++) {
@@ -40,6 +42,7 @@ class NumberChains {
         Long lastResult = calChainLength(Long.parseLong(input));
         Long newResult = 0L;
         Long chainNumber = 1L;
+
         do {
             if (chainNumber > 1) {
                 lastResult = newResult;
@@ -48,6 +51,7 @@ class NumberChains {
             newResult = calChainLength(lastResult);
         }
         while (!newResult.equals(lastResult));
+
         return chainNumber;
     }
 }
