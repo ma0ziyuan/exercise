@@ -1,5 +1,8 @@
 package com.migu.csdexercise.numberchains;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 class NumberChains {
     private String input;
 
@@ -7,52 +10,42 @@ class NumberChains {
         this.input = input;
     }
 
-    private long calChainLength(long lastResult) {
+    private long calChainLength(Long lastResult) {
         String strLastResult = String.valueOf(lastResult);
         char[] chardigitsAsc = strLastResult.toCharArray();
         char[] chardigitsDesc = new char[chardigitsAsc.length];
-        int[] intDigitsAsc = new int[chardigitsAsc.length];
-        int[] intDigitsDesc = new int[chardigitsAsc.length];
+        Integer[] intDigitsAsc = new Integer[chardigitsAsc.length];
+        Integer[] intDigitsDesc = new Integer[chardigitsAsc.length];
         for (int i = 0; i < chardigitsAsc.length; i++) {
-            intDigitsAsc[i] = chardigitsAsc[i];
-            intDigitsDesc[i] = chardigitsAsc[i];
+            intDigitsAsc[i] = chardigitsAsc[i] - '0';
+            intDigitsDesc[i] = chardigitsAsc[i] - '0';
         }
-        bubbleSort(intDigitsAsc, true);
-        bubbleSort(intDigitsDesc, false);
+        Arrays.sort(intDigitsAsc);
+        Arrays.sort(intDigitsDesc, Comparator.reverseOrder());
+
+
         for (int i = 0; i < chardigitsAsc.length; i++) {
-            chardigitsAsc[i] = (char) intDigitsAsc[i];
+            chardigitsAsc[i] = (char) (intDigitsAsc[i].intValue() + '0');
         }
         for (int i = 0; i < chardigitsDesc.length; i++) {
-            chardigitsDesc[i] = (char) intDigitsDesc[i];
+            chardigitsDesc[i] = (char) (intDigitsDesc[i].intValue() + '0');
         }
-        String strDigitAsc = String.valueOf(chardigitsAsc);
-        String strDigitDesc = String.valueOf(chardigitsDesc);
-        long longDigitAsc = Long.parseLong(strDigitAsc);
-        long longDigitDesc = Long.parseLong(strDigitDesc);
+        String strDigitAsc = new String(chardigitsAsc);
+        String strDigitDesc = new String(chardigitsDesc);
+        Long longDigitAsc = Long.parseLong(strDigitAsc);
+        Long longDigitDesc = Long.parseLong(strDigitDesc);
         return longDigitDesc - longDigitAsc;
     }
 
     long calChainLength() {
-        long lastResult = calChainLength(Long.parseLong(input));
-        long newResult = 0;
-        long chainNumber = 1;
+        Long lastResult = calChainLength(Long.parseLong(input));
+        Long newResult = 0L;
+        Long chainNumber = 1L;
         do {
             if (chainNumber > 1) lastResult = newResult;
             chainNumber++;
             newResult = calChainLength(lastResult);
-        } while ((newResult != lastResult));
+        } while (!newResult.equals(lastResult));
         return chainNumber;
-    }
-
-    private void bubbleSort(int[] arrayToSort, boolean isAsc) {
-        for (int i = 0; i < arrayToSort.length; i++) {
-            for (int j = i + 1; j < arrayToSort.length; j++) {
-                if (isAsc && (arrayToSort[i] > arrayToSort[j]) || !isAsc && (arrayToSort[i] < arrayToSort[j])) {
-                    int tmp = arrayToSort[i];
-                    arrayToSort[i] = arrayToSort[j];
-                    arrayToSort[j] = tmp;
-                }
-            }
-        }
     }
 }
