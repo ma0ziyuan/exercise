@@ -1,4 +1,4 @@
-package com.migu.csdexercise.OneHundredDoors
+package com.migu.csdexercise.onehundreddoors
 
 import spock.lang.Specification
 

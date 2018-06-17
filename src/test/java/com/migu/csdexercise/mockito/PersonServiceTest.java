@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.*;
 
 public class PersonServiceTest {
@@ -38,7 +37,8 @@ public class PersonServiceTest {
         boolean result = personService.update(2, "new name");
         assertFalse("must true", result);
         //验证是否执行过一次getPerson(1)
-        verify(mockDao, times(1)).getPerson(eq(1));
+        verify(mockDao, times(1)).getPerson(eq(2));
+        verify(mockDao, never()).getPerson(eq(1));
         //验证是否执行过一次update
         verify(mockDao, never()).update(isA(Person.class));
     }

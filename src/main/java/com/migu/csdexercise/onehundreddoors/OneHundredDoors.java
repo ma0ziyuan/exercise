@@ -1,4 +1,4 @@
-package com.migu.csdexercise.OneHundredDoors;
+package com.migu.csdexercise.onehundreddoors;
 
 class OneHundredDoors {
     private final int doorAmount = 100;
