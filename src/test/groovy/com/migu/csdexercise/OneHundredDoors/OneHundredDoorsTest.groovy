@@ -1,8 +1,6 @@
-package com.migu.csdexercise
+package com.migu.csdexercise.OneHundredDoors
 
 import spock.lang.Specification
-
-import static org.junit.Assert.assertEquals
 
 class OneHundredDoorsSpockTest extends Specification {
 
@@ -61,7 +59,7 @@ class OneHundredDoorsSpockTest extends Specification {
         oneHundredDoors.visitOneHundredTunes();
         then: "凡是1、4、9、16、25、36、49、64、81、100号的门，都是打开状态的，剩余的都是关闭状态的"
         for (int i = 1; i <= 10; i++) {
-            assertEquals(OneHundredDoors.DOOR_STATUS_OPENED, doors[i * i - 1]);
+            org.junit.Assert.assertEquals(OneHundredDoors.DOOR_STATUS_OPENED, doors[i * i - 1]);
             doors[i * i - 1] = OneHundredDoors.DOOR_STATUS_CLOSED;
         }
         doors.every() {

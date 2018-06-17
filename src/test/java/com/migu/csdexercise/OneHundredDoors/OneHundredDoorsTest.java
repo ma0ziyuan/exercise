@@ -1,4 +1,4 @@
-package com.migu.csdexercise;
+package com.migu.csdexercise.OneHundredDoors;
 
 import org.junit.After;
 import org.junit.Before;
