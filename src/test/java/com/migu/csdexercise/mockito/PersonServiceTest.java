@@ -34,7 +34,7 @@ public class PersonServiceTest {
 
     @Test
     public void testUpdateNotFind() {
-        boolean result = personService.update(2, "new name");
+        boolean result = personService.update(2, "new name1");
         assertFalse("must true", result);
         //验证是否执行过一次getPerson(1)
         verify(mockDao, times(1)).getPerson(eq(2));
