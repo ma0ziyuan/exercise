@@ -13,9 +13,9 @@ class NumberChains {
     private long calChainLength(Long lastResult) {
         String strLastResult = String.valueOf(lastResult);
         char[] chardigitsAsc = strLastResult.toCharArray();
-        char[] chardigitsDesc = new char[chardigitsAsc.length];
         Integer[] intDigitsAsc = new Integer[chardigitsAsc.length];
         Integer[] intDigitsDesc = new Integer[chardigitsAsc.length];
+
         for (int i = 0; i < chardigitsAsc.length; i++) {
             intDigitsAsc[i] = chardigitsAsc[i] - '0';
             intDigitsDesc[i] = chardigitsAsc[i] - '0';
@@ -23,13 +23,12 @@ class NumberChains {
         Arrays.sort(intDigitsAsc);
         Arrays.sort(intDigitsDesc, Comparator.reverseOrder());
 
-
+        char[] chardigitsDesc = new char[chardigitsAsc.length];
         for (int i = 0; i < chardigitsAsc.length; i++) {
-            chardigitsAsc[i] = (char) (intDigitsAsc[i].intValue() + '0');
+            chardigitsAsc[i] = (char) (intDigitsAsc[i] + '0');
+            chardigitsDesc[i] = (char) (intDigitsDesc[i] + '0');
         }
-        for (int i = 0; i < chardigitsDesc.length; i++) {
-            chardigitsDesc[i] = (char) (intDigitsDesc[i].intValue() + '0');
-        }
+
         String strDigitAsc = new String(chardigitsAsc);
         String strDigitDesc = new String(chardigitsDesc);
         Long longDigitAsc = Long.parseLong(strDigitAsc);
@@ -42,10 +41,13 @@ class NumberChains {
         Long newResult = 0L;
         Long chainNumber = 1L;
         do {
-            if (chainNumber > 1) lastResult = newResult;
+            if (chainNumber > 1) {
+                lastResult = newResult;
+            }
             chainNumber++;
             newResult = calChainLength(lastResult);
-        } while (!newResult.equals(lastResult));
+        }
+        while (!newResult.equals(lastResult));
         return chainNumber;
     }
 }
