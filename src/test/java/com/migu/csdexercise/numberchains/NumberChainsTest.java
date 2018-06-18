@@ -12,5 +12,8 @@ public class NumberChainsTest {
 
         numberChains = new NumberChains("1234");
         assertEquals(4,numberChains.calChainLength());
+
+        numberChains = new NumberChains("0000");
+        assertEquals(2,numberChains.calChainLength());
     }
 }
