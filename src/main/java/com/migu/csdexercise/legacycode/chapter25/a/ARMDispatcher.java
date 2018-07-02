@@ -1,4 +1,4 @@
-package com.migu.csdexercise.legacycode.chapter25;
+package com.migu.csdexercise.legacycode.chapter25.a;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -12,20 +12,20 @@ public class ARMDispatcher {
 
         String[] values = request.getParameterValues(pageStateName);
         if (values != null && values.length > 0) {
-            marketBindings.put(pageStateName + getDateStamp(), values[0]);
+            marketBindings.put(pageStateName, values[0]);
         }
     }
 
     public void populate(String pageStateNameValue) {
         if (pageStateNameValue != null && pageStateNameValue.length() > 0) {
-            marketBindings.put(pageStateName + getDateStamp(), pageStateNameValue);
+            marketBindings.put(pageStateName, pageStateNameValue);
         }
     }
 
     public void populate(ParameterSource parameterSource) {
         String value = parameterSource.getParameterForName(pageStateName);
         if (value != null) {
-            marketBindings.put(pageStateName + getDateStamp(), value);
+            marketBindings.put(pageStateName, value);
         }
     }
 
@@ -33,7 +33,4 @@ public class ARMDispatcher {
         return marketBindings;
     }
 
-    String getDateStamp() {
-        return "";
-    }
 }

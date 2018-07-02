@@ -1,6 +1,4 @@
-package com.migu.csdexercise.legacycode.chapter25;
-
-import javax.servlet.http.HttpServletRequest;
+package com.migu.csdexercise.legacycode.chapter25.a;
 
 public class FakeParameterSource implements ParameterSource {
 

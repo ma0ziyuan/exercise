@@ -1,4 +1,4 @@
-package com.migu.csdexercise.legacycode.chapter25;
+package com.migu.csdexercise.legacycode.chapter25.a;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,12 +16,12 @@ public class ARMDispatcherTest {
     @Test
     public void testPopulateWithStringValue() {
         armDispatcher.populate("aaa");
-        assertEquals("aaa", armDispatcher.getMarketBindings().get(ARMDispatcher.pageStateName + armDispatcher.getDateStamp()));
+        assertEquals("aaa", armDispatcher.getMarketBindings().get(ARMDispatcher.pageStateName));
     }
 
     @Test
     public void testPopulateWithParameterSource() {
         armDispatcher.populate(new FakeParameterSource());
-        assertEquals("FakeParameterSource",armDispatcher.getMarketBindings().get(ARMDispatcher.pageStateName + armDispatcher.getDateStamp()));
+        assertEquals("FakeParameterSource",armDispatcher.getMarketBindings().get(ARMDispatcher.pageStateName));
     }
 }
