@@ -14,6 +14,4 @@ public class PageLayout {
     protected List fromStyles() {
         return StyleMaster.fromStyles(template, id);
     }
-
-
 }
