@@ -1,11 +1,11 @@
 package com.migu.csdexercise.onehundreddoors;
 
 class OneHundredDoors {
-    private final int doorAmount = 100;
+    private static final int DOOR_AMOUNT = 100;
     static final int DOOR_STATUS_CLOSED = 0;
     static final int DOOR_STATUS_OPENED = 1;
 
-    private int[] doors = new int[doorAmount];
+    private int[] doors = new int[DOOR_AMOUNT];
 
     int[] getDoors() {
         return doors;
